@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's - Offizielle Homepage & Angebote</title>
+    <meta name="description" content="Offizielle Werbe-Homepage für McDonalds. Präsentiert aktuelle Aktionen, beliebte Produkte und den neuen interaktiven Filialfinder. Modernes und ansprechendes Design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-bg: #1a1a2e; /* Dark background */
+            --secondary-bg: #0f0f1d; /* Even darker for some elements */
+            --accent-color: #00ffff; /* Neon Cyan */
+            --accent-glow: 0 0 8px var(--accent-color), 0 0 16px var(--accent-color);
+            --text-color: #e0e0e0; /* Light grey for readability */
+            --light-text: #f8f8f8; /* Brighter text for headings */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* Very subtle white for glass effect */
+            --glass-border: rgba(255, 255, 255, 0.1);
+            
+            /* Animated Gradient Background Colors */
+            --gradient-start: #1e3a8a; /* Deep blue */
+            --gradient-end: #0a0a20; /* Very dark blue */
+            --gradient-mid: #0a1c3d; /* Mid tone blue */
+
+            /* Layout & Sizing */
+            --max-width: 1200px;
+            --padding-section: 80px;
+            --border-radius-lg: 15px;
+            --border-radius-md: 10px;
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end), var(--gradient-start));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--light-text);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-top: 1.5em;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            font-weight: 300;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--light-text);
+            text-shadow: var(--accent-glow);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: var(--padding-section) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            padding: 30px;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.5), var(--accent-glow);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 15px 30px;
+            border-radius: var(--border-radius-md);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color), #00e6e6, var(--accent-color));
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity var(--transition-speed), background-position var(--transition-speed);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--accent-glow);
+            color: var(--primary-bg); /* Ensure text stays dark */
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            background-position: -100% 0;
+        }
+
+        /* Navigation Bar */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2); /* Slightly darker for the header */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            color: var(--light-text);
+            text-shadow: 0 0 5px var(--accent-color);
+            font-weight: 700;
+            transition: text-shadow var(--transition-speed);
+        }
+        .logo:hover {
+            text-shadow: var(--accent-glow);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-menu a:hover::after, .nav-menu a:focus::after {
+            width: 100%;
+        }
+        
+        .nav-menu a:focus { /* Ensure focus state is visible */
+            outline: none;
+            color: var(--light-text);
+            text-shadow: var(--accent-glow);
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            border-radius: 5px;
+            transition: all var(--transition-speed);
+        }
+
+        /* Hamburger menu active state */
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: calc(100vh - 80px); /* Adjust for header height */
+            padding: var(--padding-section) 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/id/1080/1920/1080?grayscale&blur=5') no-repeat center center/cover; /* Placeholder burger background */
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        /* Hero entrance animations */
+        @keyframes fadeInTop {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.3em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInTop 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 2em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInTop 1s forwards 0.8s;
+        }
+
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInTop 1s forwards 1.1s;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            fill: var(--accent-color);
+            filter: drop-shadow(0 0 5px var(--accent-color));
+        }
+
+        .feature-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        /* Social Proof Section */
+        .social-proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px; /* Space for avatar */
+        }
+
+        .testimonial-card::before {
+            content: '“';
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6em;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+            box-shadow: var(--accent-glow);
+            position: absolute;
+            top: -40px; /* Half of height to sit on top of card */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-bg); /* Fallback */
+            z-index: 1;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--light-text);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+        }
+        
+        /* CTA Banner */
+        .cta-banner {
+            padding: var(--padding-section) 0;
+            text-align: center;
+        }
+
+        .cta-banner .glass-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+
+        .cta-banner h2 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .cta-banner p {
+            font-size: 1.2em;
+            margin-bottom: 2.5em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            padding: 40px 0;
+            margin-top: auto; /* Pushes footer to bottom */
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            font-weight: 400;
+            font-size: 0.9em;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--primary-bg);
+            box-shadow: var(--accent-glow);
+        }
+
+        .footer-socials svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer p {
+            font-size: 0.85em;
+            color: var(--text-color);
+            margin-top: 30px;
+        }
+
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.8em; }
+            h2 { font-size: 2.2em; }
+            .nav-menu { gap: 30px; }
+            .hero p { font-size: 1.2em; }
+            .cta-banner h2 { font-size: 2.5em; }
+            .cta-banner p { font-size: 1.1em; }
+            .section-padding { padding: 70px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px; /* Below header */
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95); /* Darker overlay */
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 30px 20px;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in-out;
+                z-index: 999;
+                height: calc(100vh - 80px); /* Full height minus header */
+                overflow-y: auto;
+                align-items: center;
+                gap: 25px;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.8em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            .features-grid, .social-proof-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner h2 {
+                font-size: 2em;
+            }
+
+            .cta-banner p {
+                font-size: 1em;
+            }
+
+            .cta-banner .glass-card {
+                padding: 30px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .testimonial-card {
+                padding-top: 60px;
+            }
+            .testimonial-avatar {
+                width: 70px;
+                height: 70px;
+                top: -35px;
+            }
+            .testimonial-card::before {
+                font-size: 5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">McDonald's</a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#hero">Startseite</a></li>
+                    <li><a href="#features">Angebote</a></li>
+                    <li><a href="#testimonials">Stimmen</a></li>
+                    <li><a href="#cta">Filialfinder</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <div class="hamburger-menu" id="hamburgerMenu" aria-label="Menü öffnen/schließen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <h1>Dein McDonald's Moment.<br>Immer lecker, immer nah.</h1>
+                <p>Entdecke unsere neuesten Aktionen, unwiderstehliche Klassiker und finde blitzschnell deine nächste McDonald's Filiale.</p>
+                <a href="#features" class="btn">Jetzt Angebote entdecken</a>
+            </div>
+        </section>
+
+        <section id="features" class="section-padding">
+            <div class="container">
+                <h2 class="text-center scroll-reveal">Unsere Highlights für dich</h2>
+                <p class="text-center scroll-reveal" style="max-width: 700px; margin: 15px auto 50px auto; font-size: 1.1em;">Wir entwickeln uns ständig weiter, um dir die besten Produkte und den besten Service zu bieten. Hier ein Blick auf das, was uns besonders macht.</p>
+                <div class="features-grid">
+                    <div class="glass-card feature-item scroll-reveal">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.41-7-7.93h2c0 2.86 1.15 5.48 3 7.35V19.93zm6.93-2.58c-1.57 1.74-3.66 2.82-5.93 2.82V19.93c2.72-.15 5.16-1.54 6.93-3.65zM12 4.07V6c2.86 0 5.48 1.15 7.35 3h2c-3.95-.49-7-3.41-7-7.93zM4.07 13c.49 3.95 3.41 7 7.93 7v-2c-2.86 0-5.48-1.15-7.35-3zM12 4.07c3.95.49 7 3.41 7 7.93h-2c0-2.86-1.15-5.48-3-7.35V4.07zM19.93 11c-.49-3.95-3.41-7-7.93-7v2c2.86 0 5.48 1.15 7.35 3z"/>
+                        </svg>
+                        <h3>Exklusive Aktionen</h3>
+                        <p>Verpasse keine unserer saisonalen Highlights und limitierten Angebote. Regelmäßig neue Überraschungen warten auf dich!</p>
+                    </div>
+                    <div class="glass-card feature-item scroll-reveal">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2zm0 8h2v2h-2z"/>
+                        </svg>
+                        <h3>Beliebte Klassiker</h3>
+                        <p>Vom Big Mac bis zu den knusprigen Pommes – genieße die zeitlosen Favoriten, die du liebst und kennst.</p>
+                    </div>
+                    <div class="glass-card feature-item scroll-reveal">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <h3>Interaktiver Filialfinder</h3>
+                        <p>Finde schnell und einfach die nächste McDonald's Filiale in deiner Nähe – inklusive Öffnungszeiten und Services.</p>
+                    </div>
+                    <div class="glass-card feature-item scroll-reveal">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                        </svg>
+                        <h3>Bequeme McDelivery</h3>
+                        <p>Lass dir deine Lieblingsprodukte direkt nach Hause liefern – schnell, frisch und immer pünktlich!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section-padding">
+            <div class="container">
+                <h2 class="text-center scroll-reveal">Was unsere Gäste sagen</h2>
+                <p class="text-center scroll-reveal" style="max-width: 700px; margin: 15px auto 50px auto; font-size: 1.1em;">Zufriedene Kunden sind unser größtes Lob. Hier ein paar Eindrücke von denen, die McDonald's lieben.</p>
+                <div class="social-proof-grid">
+                    <div class="glass-card testimonial-card scroll-reveal">
+                        <div class="testimonial-avatar">
+                            <img src="https://picsum.photos/id/64/80/80" alt="Profilbild von Anna S.">
+                        </div>
+                        <p>"Ich liebe die Vielfalt bei McDonald's! Egal ob Klassiker oder neue Kreationen, es ist immer für jeden Geschmack etwas dabei. Der Service ist auch super schnell!"</p>
+                        <span class="testimonial-author">- Anna S. aus Berlin</span>
+                    </div>
+                    <div class="glass-card testimonial-card scroll-reveal">
+                        <div class="testimonial-avatar">
+                            <img src="https://picsum.photos/id/1027/80/80" alt="Profilbild von Max P.">
+                        </div>
+                        <p>"Seitdem ich den neuen Filialfinder nutze, finde ich immer blitzschnell das nächste Restaurant. Das macht es so einfach, spontan einen Big Mac zu genießen. Top!"</p>
+                        <span class="testimonial-author">- Max P. aus München</span>
+                    </div>
+                    <div class="glass-card testimonial-card scroll-reveal">
+                        <div class="testimonial-avatar">
+                            <img src="https://picsum.photos/id/1005/80/80" alt="Profilbild von Lisa K.">
+                        </div>
+                        <p>"Die McDelivery ist ein Game-Changer! Besonders an einem gemütlichen Abend ist es fantastisch, wenn das Essen direkt vor die Tür geliefert wird. Fünf Sterne!"</p>
+                        <span class="testimonial-author">- Lisa K. aus Hamburg</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="section-padding cta-banner">
+            <div class="container">
+                <div class="glass-card scroll-reveal">
+                    <h2>Bereit für deinen nächsten Genussmoment?</h2>
+                    <p>Finde jetzt die McDonald's Filiale in deiner Nähe und lass dich von unseren Angeboten inspirieren!</p>
+                    <a href="https://www.mcdonalds.com/de/de-de/store-locator" target="_blank" class="btn">Deine Filiale finden</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#">Impressum</a></li>
+                <li><a href="#">Datenschutz</a></li>
+                <li><a href="#">AGB</a></li>
+                <li><a href="#">Karriere</a></li>
+                <li><a href="#">Presse</a></li>
+                <li id="contact"><a href="#">Kontakt</a></li>
+            </ul>
+            <div class="footer-socials">
+                <a href="#" aria-label="McDonald's auf Facebook">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.35C0 23.407.593 24 1.325 24h11.496v-9.294H9.692V11.237h3.129V8.53c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.802.715-1.802 1.763v2.313h3.587l-.467 3.707h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="McDonald's auf Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07c3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.254-.148-4.769-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072C2.792.272.766 2.56.272 7.053.214 8.333.201 8.741.201 12s.014 3.668.072 4.947c.494 4.492 2.781 6.502 7.273 6.995 1.28.058 1.688.072 4.946.072s3.668-.014 4.946-.072c4.492-.493 6.502-2.781 6.995-7.273.058-1.279.072-1.687.072-4.946s-.014-3.667-.072-4.946c-.493-4.492-2.781-6.502-7.273-6.995C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="McDonald's auf Twitter">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.379 0-6.123 2.744-6.123 6.122 0 .479.055.946.161 1.391-5.093-.256-9.605-2.693-12.636-6.079-.524.896-.83 1.933-.83 3.033 0 2.122 1.071 3.993 2.694 5.091-.79-.026-1.529-.243-2.176-.604-.002.022-.002.045-.002.067 0 2.984 2.127 5.474 4.93 6.04-.516.13-.889.176-1.35.176-.333 0-.653-.032-.96-.092.782 2.443 3.061 4.228 5.751 4.27a12.27 12.27 0 00-7.054 2.43c-1.701 1.147-3.717 1.815-5.875 1.815-.386 0-.766-.022-1.142-.067 2.22 1.42 4.863 2.25 7.697 2.25 9.231 0 17.96-7.643 17.96-17.96 0-.276-.006-.55-.018-.823.997-.722 1.868-1.614 2.558-2.645z"/>
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2023 McDonald's Deutschland. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        if (hamburgerMenu && navMenu) {
+            hamburgerMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+                // Toggle aria-expanded for accessibility
+                const isExpanded = hamburgerMenu.classList.contains('active');
+                hamburgerMenu.setAttribute('aria-expanded', isExpanded);
+            });
+
+            // Close menu when a link is clicked (for mobile)
+            document.querySelectorAll('#navMenu a').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburgerMenu.classList.remove('active');
+                        hamburgerMenu.setAttribute('aria-expanded', false);
+                    }
+                });
+            });
+        }
+
+        // Scroll Reveal Animation using Intersection Observer
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+        const observerOptions = {
+            root: null, /* observing the viewport */
+            rootMargin: '0px',
+            threshold: 0.1 /* element is considered visible when 10% of it is in the viewport */
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        };
+
+        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        scrollRevealElements.forEach(el => {
+            scrollObserver.observe(el);
+        });
+
+        // Smooth Scrolling for internal anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
